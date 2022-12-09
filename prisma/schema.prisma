@@ -35,12 +35,17 @@ model TicketAdmin{
 //this is the table adding by customer sell the Ticket
 model Ticket {
   id String @id @default(uuid())
-  type String
+  type Type
   numberOfTicket String
-  priceByPeice Int
+  price Int
   IBAN String
     // image String
 
   createAt DateTime @default(now())
-  user_id String
+}
+
+enum Type {
+  Regular
+  Silver
+  Gold
 }
