@@ -12,6 +12,16 @@ export const getAllTicketHandler = async(req:Request,res:Response)=>{
     }
 }
 
-export const addTicketHandler = (req:Request,res:Response)=>{
-
+export const addTicketHandler = async(req:Request,res:Response)=>{
+    try{
+        const addTicket = req.body as Ticket;
+        await prisma.ticket.create({
+            data:addTicket
+        })
+        return res.status(200).json({message:'Add the ticket'})
+    }catch(error){
+        console.log(error)
+        return res.status(400).json({message:'Server Error !'})
+    }
+   
 }
