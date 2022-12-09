@@ -78,7 +78,7 @@ export const loginHandler = async(req:Request,res:Response)=>{
             return res.status(400).json({message:"Wrong username or password"});
         }
 
-        const token = jwt.sign({id:user.id,role:user.role},process.env.JWT_SECERT as string);
+        const token = jwt.sign({id:user.id,role:user.role},process.env.JWT_SECRET as string);
         return res.status(201).json({message:`Welcome ${user.username} !`,token})
 
     }catch(error){

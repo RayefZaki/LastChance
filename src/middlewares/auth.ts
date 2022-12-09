@@ -3,7 +3,6 @@ import * as jwt from 'jsonwebtoken';
 
 export interface IUser {
   id: string;
-  role: string;
 }
 
 export const protect = (req: Request, res: Response, next: NextFunction) => {
