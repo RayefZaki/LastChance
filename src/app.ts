@@ -6,16 +6,18 @@ import ticketRouter from './router/Ticket.router';
 import ticketAdminRouter from './router/TicketAdmin.router';
 import 'dotenv/config';
 connectDB();
+import cors from 'cors';
+
 
 const app = express();
 app.use(express.json())
 // const port = 3000;
-
+app.use(cors());
 
 app.use('/api/v1/auth',userRouter);
-app.use('/api/v2/ticket',ticketRouter);
-app.use('/api/v3/ticketAdmin',ticketAdminRouter);
-const port = process.env.port || 3000;
+app.use('/api/v1/ticket',ticketRouter);
+
+const port = process.env.port || 5000;
 app.listen(port,()=>{
     console.log(`Server is ${port}`)
 })
