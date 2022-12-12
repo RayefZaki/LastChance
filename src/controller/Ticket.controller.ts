@@ -8,7 +8,7 @@ import {
 } from '../zodSchema/Ticket.zodSchema';
 
 export const getAllTicketsHandler = async (req: Request, res: Response) => {
-  const user = res.locals.user as IUser;
+  const user = req.body as Ticket;
 
   const Ticket = await prisma.ticket.findMany({
     where: { user_id: user.id },
