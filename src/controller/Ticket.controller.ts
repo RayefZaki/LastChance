@@ -18,7 +18,7 @@ export const getAllTicketsHandler = async (req: Request, res: Response) => {
 };
 
 export const addTicketHandler = async (req: Request, res: Response) => {
-  const { type ,numberOfTicket,price,} = req.body as Ticket;
+  const { type ,numberOfTicket,price} = req.body as Ticket;
   const user = res.locals.user as IUser;
 
   await prisma.ticket.create({

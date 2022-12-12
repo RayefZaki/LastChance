@@ -21,11 +21,12 @@ ticket Ticket[]
 model TicketAdmin{
   id String @id @default(uuid())
   eventName String 
-  date DateTime
+  createAt DateTime @default(now())
+  dateEvent DateTime
   locationCity String
   locationEvent String
-  shortDisc String
-  // image String
+  shortDisc String 
+  image String
 
 
 }
