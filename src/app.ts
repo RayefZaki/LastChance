@@ -16,7 +16,7 @@ app.use(cors());
 app.use('/api/v1/auth',userRouter);
 app.use('/api/v1/ticket',ticketRouter);
 
-const port = process.env.port || 5000;
+const port = process.env.port || 3000;
 app.listen(port,()=>{
     console.log(`Server is ${port}`)
 })
