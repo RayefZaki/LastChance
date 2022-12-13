@@ -11,13 +11,12 @@ datasource db {
 model User {
 id String @id @default(uuid())
 firstName String 
-LastName String 
+lastName String 
 username String  @unique
 role Role @default (customer)
 password String
 email String @unique
-mobileNumber Int? @unique
-dateOfBirth DateTime? @db.Date
+mobileNumber String @unique
 ticket Ticket[]
 }
 
@@ -30,6 +29,8 @@ model EventByAdmin{
   locationEvent String
   shortDisc String 
   image String
+  ticket Ticket[]
+
 
 
 }
@@ -44,6 +45,8 @@ model Ticket {
   createAt DateTime @default(now())
   user_id String
   user User @relation(fields: [user_id],references: [id])
+  eventByAdmin_id String
+  eventByAdmin EventByAdmin @relation(fields: [eventByAdmin_id],references: [id])
 }
 
 enum Role {
