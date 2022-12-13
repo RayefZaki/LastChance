@@ -7,7 +7,7 @@ import { addTicketSchema, deleteTicketSchema, updateTicketSchema } from '../zodS
 const ticketRouter = express.Router()
 
 ticketRouter.get('/',getAllTicketsHandler)
-ticketRouter.post('/',protect,validate(addTicketSchema),addTicketHandler)
+ticketRouter.post('/',validate(addTicketSchema),addTicketHandler)
 ticketRouter.put('/:ticketid', protect, validate(updateTicketSchema), updateTicketHandler);
 ticketRouter.delete('/:ticketid',protect,validate(deleteTicketSchema),deleteTicketHandler);
 

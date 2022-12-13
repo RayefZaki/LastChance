@@ -11,9 +11,9 @@ export const addUserSchema = z.object({
         .min(2,'Username must be more than 2')
         .max(25,'Username must be less than 25'),
         password:z.string({required_error:'Password is required'}).min(8,'Password must be less than 8'),
-        IBAN:z.string({required_error:'IBAN is required'})
-        .min(24,'IBAN must be less than 24')
-        .max(24,'IBAN must be greater than 24')
+        // IBAN:z.string({required_error:'IBAN is required'})
+        // .min(24,'IBAN must be less than 24')
+        // .max(24,'IBAN must be greater than 24')
 
 
     })

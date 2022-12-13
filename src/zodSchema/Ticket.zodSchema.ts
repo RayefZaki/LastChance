@@ -2,12 +2,12 @@ import { z } from "zod";
 
 export const addTicketSchema = z.object({
     body:z.object({
-        type:z.string({required_error:"Type is required"}),
-        numberOfTicket:z.number({required_error:'Number of ticket is required'})
+        type:z.string({required_error:"Type is required",invalid_type_error:"String"}),
+        numberOfTicket:z.number({required_error:'Number of ticket is required',invalid_type_error:"Number"})
         .min(0,'Number of ticket must be more than 0'),
-        price:z.number({required_error:'Price is required'}),
-        image:z.string({required_error:'image is required'}),
-        seatsLocation:z.string({required_error:'seatsLocation is required'})
+        price:z.number({required_error:'Price is required',invalid_type_error:'Number'}),
+        image:z.string({required_error:'image is required',invalid_type_error:"String"}),
+        seatsLocation:z.string({required_error:'seatsLocation is required',invalid_type_error:"String"})
     })
 })
 

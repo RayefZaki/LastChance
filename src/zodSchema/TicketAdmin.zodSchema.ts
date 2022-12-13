@@ -4,18 +4,17 @@ import { z } from "zod";
 export const addTicketAdminSchema = z.object({
     body:z.object({
         eventName:z.string({required_error:'eventName is required'}),
-        dateEvent:z.string({required_error:'DateEvent is required'}),
+        dateEvent:z.date({required_error:'DateEvent is required'}),
         locationCity:z.string({required_error:'LocationCity is required'}),
         locationEvent:z.string({required_error:'locationEvent is required'}),
         shortDisc:z.string({required_error:"shortDisc is required"}),
-
         image:z.string({required_error:'image is required'})
     })
 })
 
 export const updateTicketAdminSchema = z.object({
     body:z.object({
-        eventName:z.string({required_error:'eventName is required'}),
+        eventName:z.string({required_error:'eventName is required',}),
         dateEvent:z.string({required_error:'DateEvent is required'}),
         locationCity:z.string({required_error:'LocationCity is required'}),
         locationEvent:z.string({required_error:'locationEvent is required'}),

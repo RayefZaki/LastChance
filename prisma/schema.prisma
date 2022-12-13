@@ -14,7 +14,7 @@ username String  @unique
 role Role @default (customer)
 password String
 email String @unique
-IBAN String
+IBAN String ?
 ticket Ticket[]
 }
 
