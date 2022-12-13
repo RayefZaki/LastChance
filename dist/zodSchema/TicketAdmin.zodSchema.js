@@ -1,4 +1,6 @@
 "use strict";
+<<<<<<< HEAD
+=======
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getByNameTicketAdminSchema = exports.deleteTicketAdminSchema = exports.updateTicketAdminSchema = exports.addTicketAdminSchema = void 0;
 const zod_1 = require("zod");
@@ -35,3 +37,4 @@ exports.getByNameTicketAdminSchema = zod_1.z.object({
         eventName: zod_1.z.string({ required_error: 'eventName is required' }),
     })
 });
+>>>>>>> c2f22cca6760fbcd9940df9c4279532a3ea17538
