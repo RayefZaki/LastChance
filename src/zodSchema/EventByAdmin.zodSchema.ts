@@ -1,7 +1,7 @@
 
 import { z } from "zod";
 
-export const addTicketAdminSchema = z.object({
+export const addEventByAdminSchema = z.object({
     body:z.object({
         eventName:z.string({required_error:'eventName is required'}),
         dateEvent:z.date({required_error:'DateEvent is required'}),
@@ -12,7 +12,7 @@ export const addTicketAdminSchema = z.object({
     })
 })
 
-export const updateTicketAdminSchema = z.object({
+export const updateEventByAdminSchema = z.object({
     body:z.object({
         eventName:z.string({required_error:'eventName is required',}),
         dateEvent:z.string({required_error:'DateEvent is required'}),
@@ -22,27 +22,27 @@ export const updateTicketAdminSchema = z.object({
         image:z.string({required_error:'image is required'})
     }),
     params:z.object({
-        ticketAdminName:z.string({required_error:'Ticket is required'})
+        EventByAdminName:z.string({required_error:'Ticket is required'})
     })
 })
 
 
-export const deleteTicketAdminSchema = z.object({
+export const deleteEventByAdminSchema = z.object({
     params:z.object({
         eventName:z.string({required_error:'eventName is required'})
     })
 })
 
 
-export const getByNameTicketAdminSchema = z.object({
+export const getByNameEventByAdminSchema = z.object({
     params:z.object({
         eventName:z.string({required_error:'eventName is required'}),
     })
 })
 
 
-export type updateTicketAdminSchemaType = z.infer <typeof updateTicketAdminSchema>['params']
+export type updateEventByAdminSchemaType = z.infer <typeof updateEventByAdminSchema>['params']
 
-export type deleteTicketAdminSchemaType = z.infer <typeof deleteTicketAdminSchema>['params']
+export type deleteEventByAdminSchemaType = z.infer <typeof deleteEventByAdminSchema>['params']
 
-export type getByNameTicketAdminSchemaType = z.infer <typeof getByNameTicketAdminSchema>['params']
+export type getByNameEventByAdminSchemaType = z.infer <typeof getByNameEventByAdminSchema>['params']

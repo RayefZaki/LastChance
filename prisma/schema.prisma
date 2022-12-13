@@ -10,23 +10,31 @@ datasource db {
 
 model User {
 id String @id @default(uuid())
+firstName String 
+lastName String 
 username String  @unique
 role Role @default (customer)
 password String
 email String @unique
+<<<<<<< HEAD
 IBAN String ?
+=======
+mobileNumber String @unique
+>>>>>>> d80d7535a153d6f7fefe6b9423c232cc67e57d4a
 ticket Ticket[]
 }
 
-model TicketAdmin{
+model EventByAdmin{
   id String @id @default(uuid())
   eventName String @unique
   createAt DateTime @default(now())
-  dateEvent DateTime
+  dateEvent String
   locationCity String
   locationEvent String
   shortDisc String 
   image String
+  ticket Ticket[]
+
 
 
 }
@@ -41,6 +49,8 @@ model Ticket {
   createAt DateTime @default(now())
   user_id String
   user User @relation(fields: [user_id],references: [id])
+  eventByAdmin_id String
+  eventByAdmin EventByAdmin @relation(fields: [eventByAdmin_id],references: [id])
 }
 
 enum Role {

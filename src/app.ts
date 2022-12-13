@@ -3,7 +3,7 @@ import express from 'express';
 import { connectDB } from './config/db';
 import userRouter from './router/User.router';
 import ticketRouter from './router/Ticket.router';
-import ticketAdminRouter from './router/TicketAdmin.router';
+import ticketAdminRouter from './router/EventByAdmin.router';
 import 'dotenv/config';
 connectDB();
 import cors from 'cors';

@@ -12,7 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteTicketHandler = exports.updateTicketHandler = exports.addTicketHandler = exports.getAllTicketsHandler = void 0;
 const db_1 = require("../config/db");
 const getAllTicketsHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+<<<<<<< HEAD
+    const user = res.locals.user;
+=======
     const user = req.body;
+>>>>>>> c2f22cca6760fbcd9940df9c4279532a3ea17538
     const Ticket = yield db_1.prisma.ticket.findMany({
         where: { user_id: user.id },
     });
@@ -20,7 +24,11 @@ const getAllTicketsHandler = (req, res) => __awaiter(void 0, void 0, void 0, fun
 });
 exports.getAllTicketsHandler = getAllTicketsHandler;
 const addTicketHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+<<<<<<< HEAD
+    const { type, numberOfTicket, price, } = req.body;
+=======
     const { type, numberOfTicket, price, image, seatsLocation } = req.body;
+>>>>>>> c2f22cca6760fbcd9940df9c4279532a3ea17538
     const user = res.locals.user;
     yield db_1.prisma.ticket.create({
         data: {
@@ -28,8 +36,11 @@ const addTicketHandler = (req, res) => __awaiter(void 0, void 0, void 0, functio
             numberOfTicket,
             price,
             user_id: user.id,
+<<<<<<< HEAD
+=======
             image,
             seatsLocation
+>>>>>>> c2f22cca6760fbcd9940df9c4279532a3ea17538
         },
     });
     return res.status(201).json({
