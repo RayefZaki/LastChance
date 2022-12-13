@@ -10,21 +10,24 @@ datasource db {
 
 model User {
 id String @id @default(uuid())
+firstName String 
+LastName String 
 username String  @unique
 role Role @default (customer)
 password String
 email String @unique
-IBAN String
+mobileNumber Int? @unique
+dateOfBirth DateTime? @db.Date
 ticket Ticket[]
 }
 
-model TicketAdmin{
+model EventByAdmin{
   id String @id @default(uuid())
   eventName String 
   date DateTime
   locationCity String
   locationEvent String
-  shortDisc String
+  shortDesc String
   // image String
 
 
@@ -50,4 +53,5 @@ enum Type {
   Regular
   Silver
   Gold
+  Platinum
 }
