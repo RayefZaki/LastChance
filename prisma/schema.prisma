@@ -23,23 +23,24 @@ ticket Ticket[]
 
 model EventByAdmin{
   id String @id @default(uuid())
-  eventName String 
-  date DateTime
+  eventName String @unique
+  createAt DateTime @default(now())
+  dateEvent DateTime
   locationCity String
   locationEvent String
-  shortDesc String
-  // image String
+  shortDisc String 
+  image String
 
 
 }
 //this is the table adding by customer sell the Ticket
 model Ticket {
   id String @id @default(uuid())
-  type Type
+  type String
   numberOfTicket Int
   price Int
-    // image String
-
+  image String
+  seatsLocation String
   createAt DateTime @default(now())
   user_id String
   user User @relation(fields: [user_id],references: [id])
@@ -49,9 +50,8 @@ enum Role {
   customer
   admin
 }
-enum Type {
-  Regular
-  Silver
-  Gold
-  Platinum
-}
+// enum Type {
+//   Regular
+//   Silver
+//   Gold
+// }
