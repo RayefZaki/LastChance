@@ -6,9 +6,8 @@ import { addEventByAdminSchema, deleteEventByAdminSchema, getByNameEventByAdminS
 const EventByAdminRouter = express.Router()
 
 EventByAdminRouter.get('/',getEventByAdminHandler);
-EventByAdminRouter.get('/:eventName',validate(getByNameEventByAdminSchema),getByNameEventByAdminHandler);
+EventByAdminRouter.get('/:ticketid',validate(getByNameEventByAdminSchema),getByNameEventByAdminHandler);
 EventByAdminRouter.post('/',validate(addEventByAdminSchema),addEventByAdminHandler);
 EventByAdminRouter.put('/:EventByAdminName',validate(updateEventByAdminSchema),updateEventByAdminHandler);
 EventByAdminRouter.delete('/:eventName',validate(deleteEventByAdminSchema),deleteEventByAdminHandler);
-
 export default EventByAdminRouter;

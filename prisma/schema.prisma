@@ -1,5 +1,5 @@
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -9,56 +9,44 @@ datasource db {
 }
 
 model User {
-id String @id @default(uuid())
-firstName String 
-lastName String 
-username String  @unique
-role Role @default (customer)
-password String
-email String @unique
-<<<<<<< HEAD
-IBAN String ?
-=======
-mobileNumber String @unique
->>>>>>> d80d7535a153d6f7fefe6b9423c232cc67e57d4a
-ticket Ticket[]
+  id           String   @id @default(uuid())
+  firstName    String
+  lastName     String
+  username     String   @unique
+  role         Role     @default(customer)
+  password     String
+  email        String   @unique
+  mobileNumber String   @unique
+  ticket       Ticket[]
 }
 
-model EventByAdmin{
-  id String @id @default(uuid())
-  eventName String @unique
-  createAt DateTime @default(now())
-  dateEvent String
-  locationCity String
+model EventByAdmin {
+  id            String   @id @default(uuid())
+  eventName     String   @unique
+  createAt      DateTime @default(now())
+  dateEvent     String
+  locationCity  String
   locationEvent String
-  shortDisc String 
-  image String
-  ticket Ticket[]
-
-
-
+  shortDisc     String
+  image         String
+  ticket        Ticket[]
 }
-//this is the table adding by customer sell the Ticket
+
 model Ticket {
-  id String @id @default(uuid())
-  type String
-  numberOfTicket Int
-  price Int
-  image String
-  seatsLocation String
-  createAt DateTime @default(now())
-  user_id String
-  user User @relation(fields: [user_id],references: [id])
+  id              String       @id @default(uuid())
+  type            String
+  numberOfTicket  Int
+  price           Int
+  image           String
+  seatsLocation   String
+  createAt        DateTime     @default(now())
+  user_id         String
   eventByAdmin_id String
-  eventByAdmin EventByAdmin @relation(fields: [eventByAdmin_id],references: [id])
+  user            User         @relation(fields: [user_id], references: [id])
+  eventByAdmin    EventByAdmin @relation(fields: [eventByAdmin_id], references: [id])
 }
 
 enum Role {
   customer
   admin
 }
-// enum Type {
-//   Regular
-//   Silver
-//   Gold
-// }

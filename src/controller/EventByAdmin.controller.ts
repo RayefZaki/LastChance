@@ -15,9 +15,10 @@ export const getEventByAdminHandler = async(req:Request,res:Response)=>{
 
 export const getByNameEventByAdminHandler = async(req:Request,res:Response)=>{
     try{
-    let {eventName} = req.params as getByNameEventByAdminSchemaType
+    let {ticketid} = req.params as getByNameEventByAdminSchemaType
    const event =  await prisma.eventByAdmin.findFirst({
-        where:{ eventName:eventName }
+        where:{ id:ticketid}
+
     })
     return res.status(201).json(event)
     

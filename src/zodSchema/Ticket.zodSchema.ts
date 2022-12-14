@@ -7,7 +7,8 @@ export const addTicketSchema = z.object({
         .min(0,'Number of ticket must be more than 0'),
         price:z.number({required_error:'Price is required',invalid_type_error:'Number'}),
         image:z.string({required_error:'image is required',invalid_type_error:"String"}),
-        seatsLocation:z.string({required_error:'seatsLocation is required',invalid_type_error:"String"})
+        seatsLocation:z.string({required_error:'seatsLocation is required',invalid_type_error:"String"}),
+        eventByAdmin_id:z.string({required_error:'event is required',invalid_type_error:"String"}),
     })
 })
 
@@ -26,6 +27,8 @@ export const updateTicketSchema = z.object({
     }),
   }),
 });
+
+
 
 export const deleteTicketSchema = z.object({
   params: z.object({

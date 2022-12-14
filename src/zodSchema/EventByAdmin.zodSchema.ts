@@ -36,7 +36,7 @@ export const deleteEventByAdminSchema = z.object({
 
 export const getByNameEventByAdminSchema = z.object({
     params:z.object({
-        eventName:z.string({required_error:'eventName is required'}),
+        ticketid:z.string({required_error:'eventName is required'}),
     })
 })
 

@@ -1,5 +1,5 @@
 import express from 'express';
-import { addTicketHandler, deleteTicketHandler, getAllTicketsHandler, updateTicketHandler } from '../controller/Ticket.controller';
+import { addTicketHandler, deleteTicketHandler, getAllTicketsHandler, getTicketsEventByAdmin_idHandler, updateTicketHandler } from '../controller/Ticket.controller';
 import { protect } from '../middlewares/auth';
 import validate from '../middlewares/validate';
 import { addTicketSchema, deleteTicketSchema, updateTicketSchema } from '../zodSchema/Ticket.zodSchema';
@@ -7,9 +7,10 @@ import { addTicketSchema, deleteTicketSchema, updateTicketSchema } from '../zodS
 const ticketRouter = express.Router()
 
 ticketRouter.get('/',getAllTicketsHandler)
-ticketRouter.post('/',validate(addTicketSchema),addTicketHandler)
+ticketRouter.post('/',protect,validate(addTicketSchema),addTicketHandler)
 ticketRouter.put('/:ticketid', protect, validate(updateTicketSchema), updateTicketHandler);
 ticketRouter.delete('/:ticketid',protect,validate(deleteTicketSchema),deleteTicketHandler);
+ticketRouter.get('/g/:ticketid',getTicketsEventByAdmin_idHandler)
 
 
 export default ticketRouter;
