@@ -9,45 +9,60 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteTicketHandler = exports.updateTicketHandler = exports.addTicketHandler = exports.getAllTicketsHandler = void 0;
+exports.deleteTicketHandler = exports.updateTicketHandler = exports.addTicketHandler = exports.getTicketsByIdHandler = exports.getTicketsEventByAdmin_idHandler = exports.getAllTicketsHandler = void 0;
 const db_1 = require("../config/db");
 const getAllTicketsHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-<<<<<<< HEAD
-    const user = res.locals.user;
-=======
     const user = req.body;
->>>>>>> c2f22cca6760fbcd9940df9c4279532a3ea17538
     const Ticket = yield db_1.prisma.ticket.findMany({
         where: { user_id: user.id },
     });
     return res.status(200).json(Ticket);
 });
 exports.getAllTicketsHandler = getAllTicketsHandler;
+const getTicketsEventByAdmin_idHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { ticketid } = req.params;
+    // const user = res.locals.user as Ticket;
+    const Tickets = yield db_1.prisma.ticket.findMany({
+        where: { eventByAdmin_id: ticketid },
+    });
+    return res.status(200).json(Tickets);
+});
+exports.getTicketsEventByAdmin_idHandler = getTicketsEventByAdmin_idHandler;
+const getTicketsByIdHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { ticketid } = req.params;
+    // const user = res.locals.user as Ticket;
+    const Tickets = yield db_1.prisma.ticket.findMany({
+        where: { id: ticketid },
+    });
+    return res.status(200).json(Tickets);
+});
+exports.getTicketsByIdHandler = getTicketsByIdHandler;
 const addTicketHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-<<<<<<< HEAD
-    const { type, numberOfTicket, price, } = req.body;
-=======
-    const { type, numberOfTicket, price, image, seatsLocation } = req.body;
->>>>>>> c2f22cca6760fbcd9940df9c4279532a3ea17538
-    const user = res.locals.user;
-    yield db_1.prisma.ticket.create({
-        data: {
-            type,
-            numberOfTicket,
-            price,
-            user_id: user.id,
-<<<<<<< HEAD
-=======
-            image,
-            seatsLocation
->>>>>>> c2f22cca6760fbcd9940df9c4279532a3ea17538
-        },
-    });
-    return res.status(201).json({
-        message: 'New Ticket created for user : ' + user.id,
-    });
+    try {
+        const { type, numberOfTicket, price, image, seatsLocation, eventByAdmin_id } = req.body;
+        const user = res.locals.user;
+        // const {eventid} = req.params as any  
+        yield db_1.prisma.ticket.create({
+            data: {
+                type,
+                numberOfTicket,
+                price,
+                user_id: user.id,
+                eventByAdmin_id,
+                image,
+                seatsLocation,
+            },
+        });
+        return res.status(201).json({
+            message: 'New Ticket created for user : ' + user.id,
+        });
+    }
+    catch (error) {
+        return res.status(500).json({ message: "Server Error" });
+    }
 });
 exports.addTicketHandler = addTicketHandler;
+// eventByAdmin_id
 const updateTicketHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const user = res.locals.user;

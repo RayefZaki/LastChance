@@ -15,7 +15,7 @@ export const getAllTicketsHandler = async (req: Request, res: Response) => {
   });
 
   return res.status(200).json(Ticket);
-  
+
 };
 
 export const getTicketsEventByAdmin_idHandler = async (req: Request, res: Response) => {
@@ -25,6 +25,18 @@ export const getTicketsEventByAdmin_idHandler = async (req: Request, res: Respon
 
   const Tickets = await prisma.ticket.findMany({
     where: { eventByAdmin_id:ticketid},
+  });
+
+  return res.status(200).json(Tickets);
+};
+
+export const getTicketsByIdHandler = async (req: Request, res: Response) => {
+  const {ticketid} = req.params as deleteTicketSchemaType ;
+  // const user = res.locals.user as Ticket;
+
+
+  const Tickets = await prisma.ticket.findMany({
+    where: { id:ticketid},
   });
 
   return res.status(200).json(Tickets);

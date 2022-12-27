@@ -11,3 +11,5 @@ EventByAdminRouter.post('/',validate(addEventByAdminSchema),addEventByAdminHandl
 EventByAdminRouter.put('/:EventByAdminName',validate(updateEventByAdminSchema),updateEventByAdminHandler);
 EventByAdminRouter.delete('/:eventName',validate(deleteEventByAdminSchema),deleteEventByAdminHandler);
 export default EventByAdminRouter;
+
+// getByNameEventByAdminHandler

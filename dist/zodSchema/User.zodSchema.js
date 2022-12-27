@@ -11,10 +11,15 @@ exports.addUserSchema = zod_1.z.object({
             .email()
             .min(2, 'Username must be more than 2')
             .max(25, 'Username must be less than 25'),
-        password: zod_1.z.string({ required_error: 'Password is required' }).min(8, 'Password must be less than 8'),
-        IBAN: zod_1.z.string({ required_error: 'IBAN is required' })
-            .min(24, 'IBAN must be less than 24')
-            .max(24, 'IBAN must be greater than 24')
+        password: zod_1.z.string({ required_error: 'Password is required' })
+            .min(8, 'Password must be less than 8'),
+        firstName: zod_1.z.string({ required_error: 'First Name is required', invalid_type_error: "Please enter chars" })
+            .min(2, 'First Name must be more than 2')
+            .max(15, 'First Name must be less than 15'),
+        lastName: zod_1.z.string({ required_error: 'Last Name is required', invalid_type_error: "Please enter chars" })
+            .min(2, 'Last Name must be more than 2')
+            .max(15, 'Last Name must be less than 15'),
+        mobileNumber: zod_1.z.string().min(10, 'Mobile Number must be 10 numbers').max(10, 'Mobile Number must be 10 numbers'),
     })
 });
 exports.deleteUserSchema = zod_1.z.object({
@@ -33,9 +38,13 @@ exports.updateUserSchema = zod_1.z.object({
             .max(25, 'Username must be less than 25'),
         password: zod_1.z.string({ required_error: 'Password is required' })
             .min(8, 'Password must be less than 8'),
-        IBAN: zod_1.z.string({ required_error: 'IBAN is required' })
-            .min(24, 'IBAN must be less than 24')
-            .max(24, 'IBAN must be greater than 24')
+        firstName: zod_1.z.string({ required_error: 'First Name is required', invalid_type_error: "Please enter chars" })
+            .min(2, 'First Name must be more than 2')
+            .max(15, 'First Name must be less than 15'),
+        lastName: zod_1.z.string({ required_error: 'Last Name is required', invalid_type_error: "Please enter chars" })
+            .min(2, 'Last Name must be more than 2')
+            .max(15, 'Last Name must be less than 15'),
+        mobileNumber: zod_1.z.string().min(10, 'Mobile Number must be 10 numbers').max(10, 'Mobile Number must be 10 numbers'),
     }),
     params: zod_1.z.object({
         userId: zod_1.z.string()

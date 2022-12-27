@@ -4,19 +4,13 @@ exports.deleteTicketSchema = exports.updateTicketSchema = exports.addTicketSchem
 const zod_1 = require("zod");
 exports.addTicketSchema = zod_1.z.object({
     body: zod_1.z.object({
-<<<<<<< HEAD
-        type: zod_1.z.enum(["Regular", "Silver", "Gold"], { required_error: "Type is required" }),
-        numberOfTicket: zod_1.z.number({ required_error: 'Number of ticket is required' })
+        type: zod_1.z.string({ required_error: "Type is required", invalid_type_error: "String" }),
+        numberOfTicket: zod_1.z.number({ required_error: 'Number of ticket is required', invalid_type_error: "Number" })
             .min(0, 'Number of ticket must be more than 0'),
-        price: zod_1.z.number({ required_error: 'Price is required' })
-=======
-        type: zod_1.z.string({ required_error: "Type is required" }),
-        numberOfTicket: zod_1.z.number({ required_error: 'Number of ticket is required' })
-            .min(0, 'Number of ticket must be more than 0'),
-        price: zod_1.z.number({ required_error: 'Price is required' }),
-        image: zod_1.z.string({ required_error: 'image is required' }),
-        seatsLocation: zod_1.z.string({ required_error: 'seatsLocation is required' })
->>>>>>> c2f22cca6760fbcd9940df9c4279532a3ea17538
+        price: zod_1.z.number({ required_error: 'Price is required', invalid_type_error: 'Number' }),
+        image: zod_1.z.string({ required_error: 'image is required', invalid_type_error: "String" }),
+        seatsLocation: zod_1.z.string({ required_error: 'seatsLocation is required', invalid_type_error: "String" }),
+        eventByAdmin_id: zod_1.z.string({ required_error: 'event is required', invalid_type_error: "String" }),
     })
 });
 exports.updateTicketSchema = zod_1.z.object({
